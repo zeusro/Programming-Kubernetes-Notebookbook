@@ -81,3 +81,21 @@ kind: Pod
 ......
 ```
 YAML 序列化器使用了JSON encoder 的标签，使得 TypeMeta 内的字段也放进来，这就叫做内联。
+
+## ObjectMeta
+
+```go
+type ObjectMeta struct {
+Name string `json:"name,omitempty"`
+Namespace string `json:"namespace,omitempty"`
+UID types.UID `json:"uid,omitempty"`
+ResourceVersion string `json:"resourceVersion,omitempty"`
+CreationTimestamp Time `json:"creationTimestamp,omitempty"`
+DeletionTimestamp *Time `json:"deletionTimestamp,omitempty"`
+Labels map[string]string `json:"labels,omitempty"`
+Annotations map[string]string `json:"annotations,omitempty"`
+...
+}
+```
+
+这个对应 metadata 里面的字段
