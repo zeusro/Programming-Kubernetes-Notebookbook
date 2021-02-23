@@ -38,3 +38,23 @@ https://github.com/kubernetes/kubernetes/blob/16d33c49858579fbe13df52c065dbea662
 
 作者通过对比 edge-driven 和 level driven 的不足与特点，继而引出 kubernetes 这种 edge-driven 和 level driven 相结合的设计思路。
 
+## 乐观并发
+
+由于资源对象可能被多个组件同时修改，而多线程同时写可能失败。所以在修改资源要考虑加入重试机制。
+
+```go
+var err error
+for retries := 0; retries < 10; retries++ {
+foo, err = client.Get("foo", metav1.GetOptions{})
+if err != nil {
+break
+} <
+update-the-world-and-foo>
+_, err = client.Update(foo)
+if err != nil && errors.IsConflict(err) {
+continue
+} else if err != nil {
+break
+}
+}
+```
