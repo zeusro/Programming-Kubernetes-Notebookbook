@@ -26,6 +26,11 @@ deployment 的 pod  周期：
 
 从这个例子可以初步体会 kubernetes 这种 控制循环的设计思路。
 
+https://qiankunli.github.io/2020/04/27/kubernetes_event.html
+
+Understanding Kubernetes cluster events
+https://banzaicloud.com/blog/k8s-cluster-logging/
+
 ## level driven（状态驱动）
 
 level driven 有点拗口，我更愿意称之为状态驱动。
