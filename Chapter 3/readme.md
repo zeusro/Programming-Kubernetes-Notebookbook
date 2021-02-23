@@ -49,3 +49,35 @@ GroupVersionKind() GroupVersionKind
 
 可以说，实现了 GVK 和深拷贝接口的，就能视为 kubernetes 对象（比如pod，deployment等）
 
+## TypeMeta
+
+类型元数据 TypeMeta 包含 Kind 和 APIVersion 2个字段，但在kubernetes 对象中，一般取内联的值。
+
+```go
+// Pod is a collection of containers that can run on a host. This resource is
+// created by clients and scheduled onto hosts.
+type Pod struct {
+metav1.TypeMeta `json:",inline"`
+// Standard object's metadata.
+// +optional
+metav1.ObjectMeta `json:"metadata,omitempty"`
+// Specification of the desired behavior of the pod.
+// +optional
+Spec PodSpec `json:"spec,omitempty"`
+// Most recently observed status of the pod.
+// This data may not be up to date.
+// Populated by the system.
+// Read-only.
+// +optional
+Status PodStatus `json:"status,omitempty"`
+}
+```
+
+以pod 为例，已yaml形式获取该资源对象时，结果一般是这样的：
+
+```go
+apiVersion: v1
+kind: Pod
+......
+```
+YAML 序列化器使用了JSON encoder 的标签，使得 TypeMeta 内的字段也放进来，这就叫做内联。
