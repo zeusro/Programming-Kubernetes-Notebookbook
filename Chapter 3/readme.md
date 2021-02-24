@@ -99,3 +99,28 @@ Annotations map[string]string `json:"annotations,omitempty"`
 ```
 
 这个对应 metadata 里面的字段
+
+## RESTMapping
+
+传入 GVR ，转化成 GVK
+
+RESTMapping(gk schema.GroupKind, versions ...string) (*RESTMapping, error)
+
+## shared informer
+
+```go
+// NewFilteredSharedInformerFactory constructs a new instance of
+// sharedInformerFactory. Listers obtained via this sharedInformerFactory will be
+// subject to the same filters as specified here.// j p
+func NewFilteredSharedInformerFactory(
+client versioned.Interface, defaultResync time.Duration,
+namespace string,
+tweakListOptions internalinterfaces.TweakListOptionsFunc
+) SharedInformerFactor
+type TweakListOptionsFunc func(*v1.ListOptions)
+```
+
+为了减少watch的负载，一般建议使用 shared informer 去监听资源变化。
+
+通过 ObjectMeta.resourceVersion 这个字段可以判定资源是否被更新。
+
