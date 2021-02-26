@@ -36,3 +36,18 @@ JSONPath: JSON path inside the CR for the displayed value
 1. client-go dynamic client (see “Dynamic Client”)
 2. kubernetes-sigs/controller-runtime
 3. client-gen
+4. 
+
+## Dynamic Client
+
+k8s.io/client-go/dynamic
+
+根据 gvr （group version resources） 动态获取资源
+
+  client.Resource(gvr).Namespace(namespace).Get("foo", metav1.GetOptions{})
+  
+动态获取的资源类型是 *unstructured.Unstructured ，需要用内置方法获取对象属性
+
+name, found, err := unstructured.NestedString(u.Object, "metadata", "name")
+
+
