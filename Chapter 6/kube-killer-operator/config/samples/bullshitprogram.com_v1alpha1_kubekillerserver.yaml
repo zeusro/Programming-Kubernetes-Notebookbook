@@ -1,0 +1,9 @@
+apiVersion: bullshitprogram.com/v1alpha1
+kind: KubeKillerServer
+metadata:
+  name: sample-0
+spec:
+  # Add fields here
+  name:  my-app
+  image: nginx
+  replica: 1

@@ -1,0 +1,7 @@
+domain: bullshitprogram.com
+repo: github.com/p-program/kube-killer-operator
+resources:
+- group: bullshitprogram.com
+  kind: KubeKillerServer
+  version: v1alpha1
+version: "2"
