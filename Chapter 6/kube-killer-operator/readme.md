@@ -137,7 +137,7 @@ kubebuilder create api --group bullshitprogram.com --version v1alpha1 --kind Kub
 
 kubebuilder 是用 Makefile 来做构建操作的，基本的打包和编译都在 Makefile 里面。
 
-比如 `make manifests` 是生成 CRD 。
+比如 `make manifests` 是生成 CRD , `make run` 则是在本地运行 operator 。
 
 ```bash
 ➜  samples ka bullshitprogram.com_v1alpha1_kubekillerserver.yaml
@@ -157,3 +157,4 @@ No resources found in default namespace.
 NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   172.16.252.1   <none>        443/TCP   121d
 ```
+
