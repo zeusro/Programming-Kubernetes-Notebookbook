@@ -122,13 +122,17 @@ kubebuilder create api --group bullshitprogram.com --version v1alpha1 --kind Kub
 ## 实现
 
 主要的方法在
+
     func (r *KubeKillerServerReconciler) Reconcile
 
 这里我CRUD的逻辑是：
 
 创建的逻辑：已有 CR 但无 deploy，创建资源（deploy，svc）
+
 读取的逻辑：这部分可以忽略，代码体现是最后一行
+
 更新的逻辑：CR里面的Spec（这里我只简单设定了 replica）跟 deploy 不一致时
+
 删除的逻辑：找不到 CR 但找到 deploy 时做资源清理（删除deploy，删除svc）
 
 对比了以往 sample-controller 生成 typed clinet 的操作，现在直接用 controller-runtime 实现CRUD 还是比较简便的。
