@@ -39,6 +39,10 @@ level driven 有点拗口，我更愿意称之为状态驱动。
 
 https://github.com/kubernetes/kubernetes/blob/16d33c49858579fbe13df52c065dbea6627e9aef/pkg/controller/replicaset/replica_set.go
 
+https://qiankunli.github.io/2020/04/27/kubernetes_event.html
+
+https://banzaicloud.com/blog/k8s-cluster-logging/
+
 ## edge-driven or level driven ？
 
 作者通过对比 edge-driven 和 level driven 的不足与特点，继而引出 kubernetes 这种 edge-driven 和 level driven 相结合的设计思路。
